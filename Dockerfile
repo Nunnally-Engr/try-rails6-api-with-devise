@@ -1,12 +1,12 @@
 FROM ruby:2.7.3-alpine
 RUN apk update \
       && apk add --no-cache gcc make libc-dev g++ mariadb-dev tzdata nodejs~=14 yarn \
-      && mkdir /try-rails6-api
-WORKDIR /try-rails6-api
+      && mkdir /try-rails6-api-with-devise
+WORKDIR /try-rails6-api-with-devise
 COPY Gemfile .
 COPY Gemfile.lock .
 RUN bundle install --jobs=2
-COPY . /try-rails6-api
+COPY . /try-rails6-api-with-devise
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh

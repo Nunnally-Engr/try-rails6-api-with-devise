@@ -1,0 +1,24 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  charset: utf8mb4
+  collation: utf8mb4_unicode_520_ci
+  pool: 15
+  username: root
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: db
+
+development:
+  <<: *default
+  database: rails_api_development
+
+test:
+  <<: *default
+  database: rails_api_test
+
+production:
+  <<: *default
+  database: rails_api_production
+  username: rails_api
+  password: <%= ENV['DB_PASSWORD_PRODUCTION'] %>
+  host: 127.0.0.1
